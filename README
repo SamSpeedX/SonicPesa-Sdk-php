@@ -1,0 +1,101 @@
+# SonicPesa PHP SDK
+
+Official **SonicPesa PHP SDK** for integrating SonicPesa payment gateway in PHP applications.  
+Fully ready-to-use with **Composer**, no extra setup required.
+
+---
+
+## Features
+
+- Create payment orders
+- Check order status
+- Simple and flexible API
+- Composer ready with Guzzle included
+
+---
+
+## Requirements
+
+- PHP >= 8.0  
+- cURL enabled (required by Guzzle)  
+
+---
+
+## Installation
+
+Install via Composer:
+
+```bash
+composer require sonicpesa/sonicpesa-php
+```
+No additional dependencies required. Guzzle is installed automatically.
+
+Usage
+- Create order
+```php
+<?php
+// 1. Initialize SonicPesa
+require 'vendor/autoload.php';
+
+use SonicPesa\SonicPesa;
+
+$sonic = new SonicPesa("sonicpesa_api_key", "sonicpesa_secrete_key"); // Replace with your SonicPesa API key and secrete key
+$payment = $sonic->payment();
+
+// 2. Create an order
+// You can pass an array with all details:
+
+$orderData = [
+    "buyer_email" => "sam@example.com",
+    "buyer_name" => "SAM OCHU",
+    "buyer_phone" => "255657779003",
+    "amount" => 5000,
+    "currency" => "TZS"
+];
+
+$order = $payment->create_order($orderData);
+
+print_r($order);
+
+
+// 3. Check order status
+$orderId = $order['order_id'] ?? '';
+
+if ($orderId) {
+    $status = $payment->order_status($orderId);
+    print_r($status);
+} else {
+    echo "Order ID not found!";
+}
+
+// Example Response
+{
+  "status": "success",
+  "order_id": "sp_xxxxxxxx",
+  "status": "pending",
+  "amount": 5000,
+  "currency": "TZS",
+  "buyer_name": "SAM OCHU",
+  "buyer_email": "sam@example.com",
+  "buyer_phone": "255657779003"
+}
+```
+---
+
+# Notes
+
+- All amounts should be in Tanzanian Shillings (TZS) by default.
+
+- Phone numbers should include the country code (e.g., 255657779003).
+
+- Exceptions are returned as structured arrays with success and error keys.
+
+License
+
+- MIT License.
+
+---
+
+Give the repo star if you found helpfull.
+
+Developd by <a href="https://simonsoftware.xyz">Sam Software</a>

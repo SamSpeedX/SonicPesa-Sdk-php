@@ -1,0 +1,15 @@
+{
+  "name": "sonicpesa/sonicpesa-php",
+  "description": "Official SonicPesa PHP SDK",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "SonicPesa\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=8.0",
+    "guzzlehttp/guzzle": "^7.0"
+  }
+}
