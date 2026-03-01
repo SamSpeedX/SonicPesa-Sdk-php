@@ -24,7 +24,7 @@ class Payment
                 "amount" => 1000,
                 "currency" => "TZS"
             ], $data);
-            $response = $this->client->post('/v1/payment/create_order', [
+            $response = $this->client->post('/api/v1/payment/create_order', [
                 'json' => $data,
             ]);
 
@@ -41,7 +41,7 @@ class Payment
     public function order_status(string $order_id): array
     {
         try {
-            $response = $this->client->post("/v1/payment/order_status", [
+            $response = $this->client->post("/api/v1/payment/order_status", [
                 'json' => ['order_id' => $order_id]
             ]);
 

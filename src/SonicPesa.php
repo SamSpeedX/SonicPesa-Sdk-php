@@ -13,7 +13,7 @@ class SonicPesa
     protected string $baseUrl;
     protected Client $client;
 
-    public function __construct(string $apiKey, string $secreteKey, string $baseUrl = "https://api.sonicpesa.com/api")
+    public function __construct(string $apiKey, string $secreteKey, string $baseUrl = "https://api.sonicpesa.com")
     {
         $this->apiKey = $apiKey;
         $this->secreteKey = $secreteKey;
