@@ -11,5 +11,12 @@
   "require": {
     "php": ">=8.0",
     "guzzlehttp/guzzle": "^7.0"
-  }
+  },
+  "repositories": [{
+    "packagist.org": false
+  },{
+    "name": "private-packagist",
+    "type": "composer",
+    "url": "https://repo.packagist.com/sam-software/"
+  }]
 }

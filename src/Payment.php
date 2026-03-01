@@ -31,8 +31,10 @@ class Payment
             return json_decode($response->getBody(), true);
 
         } catch (\Exception $e) {
-            return $e->getMessage();
-            // throw new SonicPesaException($e->getMessage());
+            return [
+                'success' => false,
+                'error' => $e->getMessage()
+            ];
         }
     }
 
@@ -46,8 +48,10 @@ class Payment
             return json_decode($response->getBody(), true);
 
         } catch (\Exception $e) {
-            return $e->getMessage();
-            // throw new SonicPesaException($e->getMessage());
+            return [
+                'success' => false,
+                'error' => $e->getMessage()
+            ];
         }
     }
 }
